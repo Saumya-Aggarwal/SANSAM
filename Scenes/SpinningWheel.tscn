@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfa8xd8hsq4rd"]
+
+[ext_resource type="Texture2D" uid="uid://c0yaqakk3spav" path="res://Assests/Sprites/ringouter (1).png" id="1_2crme"]
+[ext_resource type="Script" path="res://Scripts/spinning_wheel.gd" id="1_6dwbp"]
+[ext_resource type="Texture2D" uid="uid://bwqyewut4uhlo" path="res://Assests/Sprites/wheeeels (1).png" id="2_gj0ao"]
+[ext_resource type="Texture2D" uid="uid://drwplk4u2kokt" path="res://Assests/Sprites/click (1).png" id="3_fog3i"]
+[ext_resource type="Texture2D" uid="uid://dkbvxijacy5yl" path="res://Assests/Sprites/clicked.png" id="4_ngrni"]
+[ext_resource type="Texture2D" uid="uid://c2xoxbqx4xj5w" path="res://Assests/Sprites/pointer (6).png" id="5_2cqvm"]
+
+[node name="Spin_wheel" type="Control"]
+layout_mode = 3
+anchor_right = 1.004
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 0.391968
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6dwbp")
+
+[node name="outerRing" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.5
+anchor_right = 0.506
+anchor_bottom = 0.5
+offset_left = -345.96
+offset_top = -352.5
+offset_right = 644.04
+offset_bottom = 637.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_2crme")
+
+[node name="Wheel" type="TextureRect" parent="outerRing"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -675.0
+offset_top = -1012.0
+offset_right = 1371.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(675.714, 1011.29)
+texture = ExtResource("2_gj0ao")
+
+[node name="arrow" type="TextureRect" parent="outerRing"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -652.143
+offset_top = -482.857
+offset_right = 1131.86
+offset_bottom = 1006.14
+grow_horizontal = 2
+scale = Vector2(0.998129, 0.888212)
+pivot_offset = Vector2(652.857, 582.857)
+texture = ExtResource("5_2cqvm")
+
+[node name="TextureRect" type="TextureRect" parent="outerRing"]
+layout_mode = 0
+offset_right = 990.0
+offset_bottom = 990.0
+texture = ExtResource("1_2crme")
+
+[node name="btn_spin" type="TextureButton" parent="outerRing"]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -49.0
+offset_right = 947.0
+offset_bottom = 941.0
+scale = Vector2(1.1, 1.1)
+texture_normal = ExtResource("3_fog3i")
+texture_pressed = ExtResource("4_ngrni")
+
+[connection signal="pressed" from="outerRing/btn_spin" to="." method="_on_btn_spin_pressed"]
